@@ -1,0 +1,20 @@
+tags:
+  - name: Form insert data kamus alay
+get:
+  description: Insert Form yang akan diproses
+parameters:
+  - name : kata_tidak_standard
+    in   : formData
+    required : true
+    type : string 
+  - name : kata_standard
+    in   : formData
+    required : true
+    type : string 
+responses:
+    '200':
+        description : Successful responses
+    '400':
+        description : Bad Request
+    '500':
+        description : Internal Server Error

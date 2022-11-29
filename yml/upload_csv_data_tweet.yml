@@ -1,0 +1,17 @@
+      tags:
+        - Upload CSV Data Tweet And Cleaning Proccessing
+      consumes:
+        - multipart/form-data
+      parameters:
+        - name: upfile
+          in: formData
+          required: true
+          type: file
+          
+      responses:
+          '200':
+              description : Successful responses
+          '400':
+              description : Bad Request
+          '500':
+              description : Internal Server Error
