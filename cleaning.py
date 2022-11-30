@@ -39,8 +39,6 @@ def kamus_alay_dataframe(conn):
 def cleaningText(conn,text_kotor,abusive_dataframe,kamus_alay_dataframe):
     ''' start cleaning string '''
     # regex methode
-   
-    #sps_c = r"[a-zA-Z0-9]+[\a-zA-Z0-9]+\s"
     sps_c = r"[a-zA-Z0-9]+[\a-zA-Z0-9]"
     x2 = re.findall(sps_c, text_kotor.lower())
     x1 = ''.join(x2)
