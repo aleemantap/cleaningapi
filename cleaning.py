@@ -40,23 +40,25 @@ def cleaningText(conn,text_kotor,abusive_dataframe,kamus_alay_dataframe):
     ''' start cleaning string '''
     # regex methode
    
-    sps_c = r"[a-zA-Z0-9]+[\a-zA-Z0-9]+\s"
+    #sps_c = r"[a-zA-Z0-9]+[\a-zA-Z0-9]+\s"
+    sps_c = r"[a-zA-Z0-9]+[\a-zA-Z0-9]"
     x2 = re.findall(sps_c, text_kotor.lower())
     x1 = ''.join(x2)
     sxs = re.sub(r"\buser|\bRt|\bRT|[:]","",x1)
     
-    lst = []
-    lst.append(sxs.strip())
+    # lst = []
+    # lst.append(sxs.strip())
    
-    data_dict = {'data_kotor': lst}
-    p = pd.DataFrame(data_dict)    
+    # data_dict = {'data_kotor': lst}
+    # p = pd.DataFrame(data_dict)    
     ''' end cleaning string '''
     
     ''' start replace  word abusive to *** '''        
     data_abusive_to_list = abusive_dataframe 
-    
-    text = p.loc[0]['data_kotor']
+    #text = p.loc[0]['data_kotor']
+    text = sxs.strip()
     txtSplit = re.split("\s", text)
+    #print("txtSplit, :", txtSplit)
     #list_data_hasil_count_abusive = []
     cnt_abusive = 0
     for x in data_abusive_to_list:
@@ -139,7 +141,7 @@ def cln_raw(conn,text,abusive_dataframe,kamus_alay_dataframe):
        
     
     sql = ''' INSERT INTO data_tweet(tweet_not_clean,tweet_after_clear,count_cleaning_abusive,count_cleaning_kamus_alay)
-              VALUES(?,?,?,?,?) '''
+              VALUES(?,?,?,?) '''
     cur = conn.cursor()
     cur.execute(sql, data)
     conn.commit()
